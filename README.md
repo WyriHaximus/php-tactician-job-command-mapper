@@ -1,11 +1,11 @@
 # Job to Command mapper for [`Tactician`](http://tactician.thephpleague.com/)
 
-[![Build Status](https://travis-ci.org/wyrihaximus/php-tactician-job-command-mapper.svg?branch=master)](https://travis-ci.org/wyrihaximus/php-tactician-job-command-mapper)
-[![Latest Stable Version](https://poser.pugx.org/wyrihaximus/tactician-job-command-mapper/v/stable.png)](https://packagist.org/packages/wyrihaximus/tactician-job-command-mapper)
-[![Total Downloads](https://poser.pugx.org/wyrihaximus/tactician-job-command-mapper/downloads.png)](https://packagist.org/packages/wyrihaximus/tactician-job-command-mapper/stats)
-[![Code Coverage](https://scrutinizer-ci.com/g/wyrihaximus/php-tactician-job-command-mapper/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/wyrihaximus/php-tactician-job-command-mapper/?branch=master)
-[![License](https://poser.pugx.org/wyrihaximus/tactician-job-command-mapper/license.png)](https://packagist.org/packages/wyrihaximus/tactician-job-command-mapper)
-[![PHP 7 ready](http://php7ready.timesplinter.ch/wyrihaximus/php-tactician-job-command-mapper/badge.svg)](https://travis-ci.org/wyrihaximus/php-tactician-job-command-mapper)
+[![Build Status](https://travis-ci.org/WyriHaximus/php-tactician-job-command-mapper.svg?branch=master)](https://travis-ci.org/WyriHaximus/php-tactician-job-command-mapper)
+[![Latest Stable Version](https://poser.pugx.org/WyriHaximus/tactician-job-command-mapper/v/stable.png)](https://packagist.org/packages/WyriHaximus/tactician-job-command-mapper)
+[![Total Downloads](https://poser.pugx.org/WyriHaximus/tactician-job-command-mapper/downloads.png)](https://packagist.org/packages/WyriHaximus/tactician-job-command-mapper/stats)
+[![Code Coverage](https://scrutinizer-ci.com/g/WyriHaximus/php-tactician-job-command-mapper/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/WyriHaximus/php-tactician-job-command-mapper/?branch=master)
+[![License](https://poser.pugx.org/WyriHaximus/tactician-job-command-mapper/license.png)](https://packagist.org/packages/WyriHaximus/tactician-job-command-mapper)
+[![PHP 7 ready](http://php7ready.timesplinter.ch/WyriHaximus/php-tactician-job-command-mapper/badge.svg)](https://travis-ci.org/WyriHaximus/php-tactician-job-command-mapper)
 
 
 # Install
