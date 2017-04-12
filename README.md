@@ -18,7 +18,7 @@ composer require wyrihaximus/tactician-job-command-mapper
 
 # Set up
 
-When creating a `Command` add the `@Handler` annotation to map it to a `Handler`.
+When creating a `Command` add the `@Job` annotation to map it to one or more jobs.
 
 ```php
 <?php
@@ -32,55 +32,44 @@ use WyriHaximus\Tactician\JobCommand\Annotations\Job;
  */
 class AwesomesauceCommand
 {
-    /**
-     * @var string
-     */
-    private $value;
-
-    /**
-     * AwesomesauceCommand constructor.
-     * @param string $value
-     */
-    public function __construct($value)
-    {
-        $this->value = $value;
-    }
-
-    /**
-     * @return string
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
 }
 ```
 
 # Mapping
 
-The mapper needs two things, a path where it can find commands, and the corrosponding namespace for that path. From there it scans all classes it finds for the `@Handler` annotation ad returns a map of commands and handlers that match.
-
-## Mapper::mapInstantiated
-
-For when you want to get started quickly and non of you handlers need to get dependencies injected.
-
-```php
-use League\Tactician\Setup\QuickStart;
-use WyriHaximus\Tactician\CommandHandler\Mapper;
-
-$commandBus = QuickStart::create(
-    Mapper::mapInstanciated('src' . DS . 'CommandBus', 'App\CommandBus')
-);
-```
+The mapper needs two things, a path where it can find commands, and the corresponding namespace for that path. From there it scans all classes it finds for the `@Job` annotation and stores that map internally
 
 ## Mapper::map
 
-For when you don't want a set instanciated handlers, for exampe useful when using [`league/tactician-container`](http://tactician.thephpleague.com/plugins/container/) for automatic dependency injection.
+To add a set of commands simple pass it the path and correspooding namespace.
 
 ```php
 use League\Tactician\Setup\QuickStart;
 
-$commandToHandlerMap = Mapper::map('src' . DS . 'CommandBus', 'App\CommandBus');
+$map = (new Mapper())->map('src' . DS . 'CommandBus', 'App\CommandBus');
+```
+
+## Mapper::hasCommand
+
+Check if the map has a command for the job we have.
+
+```php
+$job = 'awesomesauce';
+// True when it has a command or false when it doesn't
+$map->hasCommand($job);
+```
+
+## Mapper::getCommand
+
+Check if the map has a command for the job we have.
+
+```php
+$job = 'awesomesauce';
+// Command class when it has a command, or throws an exception when it doesn't
+$command = $map->getCommand($job);
+
+// Call the command bus with the command we found to handle the given job
+$commandBus->handle(new $command(...$data));
 ```
 
 # License
