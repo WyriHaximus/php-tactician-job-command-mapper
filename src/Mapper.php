@@ -20,9 +20,9 @@ final class Mapper
     /**
      * @param string $path
      * @param string $namespace
-     * @return array
+     * @return Mapper
      */
-    public function map(string $path, string $namespace)
+    public function map(string $path, string $namespace): Mapper
     {
         $reader = new AnnotationReader();
 
@@ -52,6 +52,8 @@ final class Mapper
 
             $this->map[$job] = $class;
         }
+
+        return $this;
     }
 
     /**

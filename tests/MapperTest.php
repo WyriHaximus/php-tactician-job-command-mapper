@@ -13,16 +13,15 @@ class MapperTest extends TestCase
 {
     public function testMap()
     {
-        $mapper = new Mapper();
         $path = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'test-app' . DIRECTORY_SEPARATOR . 'Commands' . DIRECTORY_SEPARATOR;
         $namespace = 'Test\App\Commands';
-        $mapper->map($path, $namespace);
+        $map = (new Mapper())->map($path, $namespace);
 
-        self::assertFalse($mapper->hasCommand('sauce'));
-        self::assertTrue($mapper->hasCommand('awesomesauce'));
+        self::assertFalse($map->hasCommand('sauce'));
+        self::assertTrue($map->hasCommand('awesomesauce'));
         self::assertSame(
             AwesomesauceCommand::class,
-            $mapper->getCommand('awesomesauce')
+            $map->getCommand('awesomesauce')
         );
     }
 
