@@ -72,6 +72,48 @@ $command = $map->getCommand($job);
 $commandBus->handle(new $command(...$data));
 ```
 
+## Full class example
+
+```php
+final class CommandBusWrapper
+{
+    /**
+      * @var CommandBus
+      */
+    private $commandBus;
+    
+    /**
+      * @var Mapper
+      */
+    private $map;
+    
+    /**
+      * @param CommandBus
+      */
+    public function __construct(CommandBus $commandBus)
+    {
+        $this->commandBus = $commandBus;
+        $this->map = (new Mapper())->map('src' . DS . 'CommandBus', 'App\CommandBus');
+    }
+    
+    /**
+      * @param string $job
+      * @param array $data
+      * @return bool
+      */
+    function handle(string $job, array $data = []): bool
+    {
+        if (!$this->map->hasCommand($job)) {
+            return false;
+        }
+
+        $command = $map->getCommand($job);
+        $this->commandBus->handle(new $command(...$data));
+        return true;
+    }
+}
+```
+
 # License
 
 The MIT License (MIT)
