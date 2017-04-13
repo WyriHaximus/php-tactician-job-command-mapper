@@ -10,28 +10,40 @@ class JobTest extends TestCase
     public function provideJobs()
     {
         yield [
-            [
-                'job',
-            ],
-            'job',
+            [],
+            [],
         ];
 
         yield [
             [
+                'value' => 'job',
+            ],
+            [
+                'job',
+            ],
+        ];
+
+        yield [
+            [
+                'value' => [
+                    'jobA',
+                    'jobB',
+                ],
+            ],
+            [
                 'jobA',
                 'jobB',
             ],
-            'jobA',
         ];
     }
 
     /**
-     * @param array $jobs
-     * @param string $expectedJob
+     * @param string[] $jobs
+     * @param string[] $expectedJob
      * @dataProvider provideJobs
      */
-    public function testGetJob(array $jobs, string $expectedJob)
+    public function testGetJob(array $jobs, array $expectedJob)
     {
-        $this->assertSame($expectedJob, (new Job($jobs))->getJob());
+        $this->assertSame($expectedJob, (new Job($jobs))->getJobs());
     }
 }

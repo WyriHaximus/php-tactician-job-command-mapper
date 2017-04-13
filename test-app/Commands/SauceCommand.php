@@ -5,8 +5,8 @@ namespace Test\App\Commands;
 use WyriHaximus\Tactician\JobCommand\Annotations\Job;
 
 /**
- * @Job({"awesomesauce", "sauceawesome"})
+ * @Job("sauce")
  */
-class AwesomesauceCommand
+class SauceCommand
 {
 }

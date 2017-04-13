@@ -7,6 +7,7 @@ use Exception;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 use Test\App\Commands\AwesomesauceCommand;
+use Test\App\Commands\SauceCommand;
 use WyriHaximus\Tactician\JobCommand\Mapper;
 
 class MapperTest extends TestCase
@@ -17,36 +18,48 @@ class MapperTest extends TestCase
         $namespace = 'Test\App\Commands';
         $map = (new Mapper())->map($path, $namespace);
 
-        self::assertFalse($map->hasCommand('sauce'));
+        self::assertFalse($map->hasCommand('soya'));
+        self::assertFalse($map->hasCommand('beans'));
+        self::assertTrue($map->hasCommand('sauce'));
         self::assertTrue($map->hasCommand('awesomesauce'));
+        self::assertTrue($map->hasCommand('sauceawesome'));
         self::assertSame(
             AwesomesauceCommand::class,
             $map->getCommand('awesomesauce')
+        );
+        self::assertSame(
+            AwesomesauceCommand::class,
+            $map->getCommand('sauceawesome')
         );
     }
 
     public function commandsProvider()
     {
         yield [
+            SauceCommand::class,
+            ['sauce'],
+        ];
+
+        yield [
             AwesomesauceCommand::class,
-            'awesomesauce',
+            ['awesomesauce', 'sauceawesome'],
         ];
 
         yield [
             stdClass::class,
-            '',
+            [],
         ];
     }
 
     /**
      * @param string $command
-     * @param string $job
+     * @param array $jobs
      * @dataProvider commandsProvider
      */
-    public function testGetJobFromCommand(string $command, string $job)
+    public function testGetJobFromCommand(string $command, array $jobs)
     {
-        $result = (new Mapper())->getJobFromCommand($command, new AnnotationReader());
-        $this->assertSame($job, $result);
+        $result = (new Mapper())->getJobsFromCommand($command, new AnnotationReader());
+        $this->assertSame($jobs, $result);
     }
 
     public function testGetCommandFailure()

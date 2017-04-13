@@ -9,23 +9,33 @@ namespace WyriHaximus\Tactician\JobCommand\Annotations;
 final class Job
 {
     /**
-     * @var string
+     * @var string[]
      */
-    private $job;
+    private $jobs = [];
 
     /**
-     * @param array $jobs
+     * Job constructor.
+     * @param string[] $jobs
      */
     public function __construct(array $jobs)
     {
-        $this->job = current($jobs);
+        if (!isset($jobs['value'])) {
+            return;
+        }
+
+        if (is_string($jobs['value'])) {
+            $this->jobs[] = $jobs['value'];
+            return;
+        }
+
+        $this->jobs = $jobs['value'];
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getJob(): string
+    public function getJobs(): array
     {
-        return $this->job;
+        return $this->jobs;
     }
 }
