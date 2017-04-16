@@ -29,6 +29,8 @@ use WyriHaximus\Tactician\JobCommand\Annotations\Job;
 
 /**
  * @Job("awesomesauce")
+ * OR
+ * @Job({"awesomesauce", "sauceawesome"})
  */
 class AwesomesauceCommand
 {
