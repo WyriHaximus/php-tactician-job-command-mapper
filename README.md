@@ -1,4 +1,4 @@
-# Job to Command mapper for [`Tactician`](http://tactician.thephpleague.com/)
+# Job to Command mapper intended to be used with [`Tactician`](http://tactician.thephpleague.com/)
 
 [![Build Status](https://travis-ci.org/WyriHaximus/php-tactician-job-command-mapper.svg?branch=master)](https://travis-ci.org/WyriHaximus/php-tactician-job-command-mapper)
 [![Latest Stable Version](https://poser.pugx.org/WyriHaximus/tactician-job-command-mapper/v/stable.png)](https://packagist.org/packages/WyriHaximus/tactician-job-command-mapper)
