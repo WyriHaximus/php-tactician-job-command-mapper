@@ -2,8 +2,8 @@
 
 namespace Tests\Annotations;
 
-use WyriHaximus\Tactician\JobCommand\Annotations\Job;
 use PHPUnit\Framework\TestCase;
+use WyriHaximus\Tactician\JobCommand\Annotations\Job;
 
 class JobTest extends TestCase
 {

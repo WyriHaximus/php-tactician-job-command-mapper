@@ -53,7 +53,7 @@ class MapperTest extends TestCase
 
     /**
      * @param string $command
-     * @param array $jobs
+     * @param array  $jobs
      * @dataProvider commandsProvider
      */
     public function testGetJobFromCommand(string $command, array $jobs)

@@ -25,6 +25,7 @@ final class Job
 
         if (is_string($jobs['value'])) {
             $this->jobs[] = $jobs['value'];
+
             return;
         }
 
