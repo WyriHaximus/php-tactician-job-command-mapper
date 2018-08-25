@@ -10,7 +10,7 @@ use RecursiveIteratorIterator;
 use ReflectionClass;
 use WyriHaximus\Tactician\JobCommand\Annotations\Job;
 
-final class Mapper
+final class Mapper implements MapperInterface
 {
     /**
      * @var array
@@ -18,8 +18,8 @@ final class Mapper
     private $map = [];
 
     /**
-     * @param string $path
-     * @param string $namespace
+     * @param  string $path
+     * @param  string $namespace
      * @return Mapper
      */
     public function map(string $path, string $namespace): Mapper
@@ -59,8 +59,8 @@ final class Mapper
     }
 
     /**
-     * @param string $command
-     * @param Reader $reader
+     * @param  string $command
+     * @param  Reader $reader
      * @return array
      */
     public function getJobsFromCommand(string $command, Reader $reader): array
@@ -75,7 +75,7 @@ final class Mapper
     }
 
     /**
-     * @param string $job
+     * @param  string $job
      * @return bool
      */
     public function hasCommand(string $job): bool
@@ -84,9 +84,9 @@ final class Mapper
     }
 
     /**
-     * @param string $job
-     * @return string
+     * @param  string    $job
      * @throws Exception
+     * @return string
      */
     public function getCommand(string $job): string
     {
