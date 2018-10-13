@@ -5,10 +5,9 @@ namespace WyriHaximus\Tactician\JobCommand;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\Reader;
 use Exception;
-use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
 use ReflectionClass;
 use WyriHaximus\Tactician\JobCommand\Annotations\Job;
+use function WyriHaximus\listClassesInDirectory;
 
 final class Mapper implements MapperInterface
 {
@@ -19,31 +18,13 @@ final class Mapper implements MapperInterface
 
     /**
      * @param  string $path
-     * @param  string $namespace
      * @return Mapper
      */
-    public function map(string $path, string $namespace): Mapper
+    public function map(string $path): Mapper
     {
         $reader = new AnnotationReader();
 
-        $directory = new RecursiveDirectoryIterator($path);
-        $directory = new RecursiveIteratorIterator($directory);
-
-        foreach ($directory as $node) {
-            if (!is_file($node->getPathname())) {
-                continue;
-            }
-
-            $file = substr($node->getPathname(), strlen($path));
-            $file = ltrim($file, DIRECTORY_SEPARATOR);
-            $file = rtrim($file, '.php');
-
-            $class = $namespace . '\\' . str_replace(DIRECTORY_SEPARATOR, '\\', $file);
-
-            if (!class_exists($class)) {
-                continue;
-            }
-
+        foreach (listClassesInDirectory($path) as $class) {
             $jobs = self::getJobsFromCommand($class, $reader);
 
             if (count($jobs) === 0) {

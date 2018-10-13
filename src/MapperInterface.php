@@ -6,7 +6,7 @@ use Doctrine\Common\Annotations\Reader;
 
 interface MapperInterface
 {
-    public function map(string $path, string $namespace): Mapper;
+    public function map(string $path): Mapper;
 
     public function getJobsFromCommand(string $command, Reader $reader): array;
 

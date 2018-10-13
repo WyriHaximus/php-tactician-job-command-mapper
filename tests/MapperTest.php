@@ -15,8 +15,7 @@ class MapperTest extends TestCase
     public function testMap()
     {
         $path = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'test-app' . DIRECTORY_SEPARATOR . 'Commands' . DIRECTORY_SEPARATOR;
-        $namespace = 'Test\App\Commands';
-        $map = (new Mapper())->map($path, $namespace);
+        $map = (new Mapper())->map($path);
 
         self::assertFalse($map->hasCommand('soya'));
         self::assertFalse($map->hasCommand('beans'));
