@@ -10,11 +10,14 @@ use Test\App\Commands\AwesomesauceCommand;
 use Test\App\Commands\SauceCommand;
 use WyriHaximus\Tactician\JobCommand\Mapper;
 
+/**
+ * @internal
+ */
 class MapperTest extends TestCase
 {
-    public function testMap()
+    public function testMap(): void
     {
-        $path = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'test-app' . DIRECTORY_SEPARATOR . 'Commands' . DIRECTORY_SEPARATOR;
+        $path = \dirname(__DIR__) . DIRECTORY_SEPARATOR . 'test-app' . DIRECTORY_SEPARATOR . 'Commands' . DIRECTORY_SEPARATOR;
         $map = (new Mapper())->map($path);
 
         self::assertFalse($map->hasCommand('soya'));
@@ -55,13 +58,13 @@ class MapperTest extends TestCase
      * @param array  $jobs
      * @dataProvider commandsProvider
      */
-    public function testGetJobFromCommand(string $command, array $jobs)
+    public function testGetJobFromCommand(string $command, array $jobs): void
     {
         $result = (new Mapper())->getJobsFromCommand($command, new AnnotationReader());
         $this->assertSame($jobs, $result);
     }
 
-    public function testGetCommandFailure()
+    public function testGetCommandFailure(): void
     {
         self::expectException(Exception::class);
         self::expectExceptionMessage('No command known for job: void');
