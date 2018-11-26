@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9ead0f547f8d99a72ac147caaa4b8fc",
+    "content-hash": "8503f50d2b08103cf02c619b3d5f019b",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -519,7 +519,7 @@
         },
         {
             "name": "wyrihaximus/list-classes-in-directory",
-            "version": "dev-master",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-list-classes-in-directory.git",
@@ -4124,9 +4124,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "wyrihaximus/list-classes-in-directory": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

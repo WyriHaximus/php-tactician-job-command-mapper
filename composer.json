@@ -12,7 +12,7 @@
     "php": "^7.2",
     "doctrine/annotations": "^1.6",
     "wyrihaximus/doctrine-annotation-autoloader": "^1.0",
-    "wyrihaximus/list-classes-in-directory": "dev-master"
+    "wyrihaximus/list-classes-in-directory": "^1.3"
   },
   "require-dev": {
     "api-clients/test-utilities": "^5.1"
