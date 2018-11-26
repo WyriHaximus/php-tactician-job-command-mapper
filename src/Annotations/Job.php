@@ -23,7 +23,7 @@ final class Job
             return;
         }
 
-        if (is_string($jobs['value'])) {
+        if (\is_string($jobs['value'])) {
             $this->jobs[] = $jobs['value'];
 
             return;

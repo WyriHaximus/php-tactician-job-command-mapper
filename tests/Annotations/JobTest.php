@@ -5,6 +5,9 @@ namespace Tests\Annotations;
 use PHPUnit\Framework\TestCase;
 use WyriHaximus\Tactician\JobCommand\Annotations\Job;
 
+/**
+ * @internal
+ */
 class JobTest extends TestCase
 {
     public function provideJobs()
@@ -42,7 +45,7 @@ class JobTest extends TestCase
      * @param string[] $expectedJob
      * @dataProvider provideJobs
      */
-    public function testGetJob(array $jobs, array $expectedJob)
+    public function testGetJob(array $jobs, array $expectedJob): void
     {
         $this->assertSame($expectedJob, (new Job($jobs))->getJobs());
     }

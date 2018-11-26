@@ -27,7 +27,7 @@ final class Mapper implements MapperInterface
         foreach (listClassesInDirectory($path) as $class) {
             $jobs = self::getJobsFromCommand($class, $reader);
 
-            if (count($jobs) === 0) {
+            if (\count($jobs) === 0) {
                 continue;
             }
 
