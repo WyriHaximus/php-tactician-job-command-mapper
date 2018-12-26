@@ -17,7 +17,7 @@ class MapperTest extends TestCase
 {
     public function testMap(): void
     {
-        $path = \dirname(__DIR__) . DIRECTORY_SEPARATOR . 'test-app' . DIRECTORY_SEPARATOR . 'Commands' . DIRECTORY_SEPARATOR;
+        $path = \dirname(__DIR__) . \DIRECTORY_SEPARATOR . 'test-app' . \DIRECTORY_SEPARATOR . 'Commands' . \DIRECTORY_SEPARATOR;
         $map = (new Mapper())->map($path);
 
         self::assertFalse($map->hasCommand('soya'));
