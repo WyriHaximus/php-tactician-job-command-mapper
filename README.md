@@ -39,16 +39,16 @@ class AwesomesauceCommand
 
 # Mapping
 
-The mapper needs two things, a path where it can find commands, and the corresponding namespace for that path. From there it scans all classes it finds for the `@Job` annotation and stores that map internally
+The mapper needs two things, a path where it can find commands. From there it scans all classes it finds for the `@Job` annotation and stores that map internally
 
 ## Mapper::map
 
-To add a set of commands simple pass it the path and correspooding namespace.
+To add a set of commands simple pass it the path and the mapper will pick up the correct namespaces for you.
 
 ```php
 use League\Tactician\Setup\QuickStart;
 
-$map = (new Mapper())->map('src' . DS . 'CommandBus', 'App\CommandBus');
+$map = (new Mapper())->map('src' . DS . 'CommandBus');
 ```
 
 ## Mapper::hasCommand
