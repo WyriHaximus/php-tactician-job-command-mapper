@@ -16,16 +16,25 @@ final class Mapper implements MapperInterface
      */
     private $map = [];
 
+    /** @var Reader */
+    private $reader;
+
+    /**
+     * @param Reader|null $reader
+     */
+    public function __construct(?Reader $reader = null)
+    {
+        $this->reader = $reader ?? new AnnotationReader();
+    }
+
     /**
      * @param  string $path
      * @return Mapper
      */
     public function map(string $path): Mapper
     {
-        $reader = new AnnotationReader();
-
         foreach (listClassesInDirectory($path) as $class) {
-            $jobs = self::getJobsFromCommand($class, $reader);
+            $jobs = self::getJobsFromCommand($class);
 
             if (\count($jobs) === 0) {
                 continue;
@@ -44,9 +53,9 @@ final class Mapper implements MapperInterface
      * @param  Reader $reader
      * @return array
      */
-    public function getJobsFromCommand(string $command, Reader $reader): array
+    public function getJobsFromCommand(string $command): array
     {
-        $annotation = $reader->getClassAnnotation(new ReflectionClass($command), Job::class);
+        $annotation = $this->reader->getClassAnnotation(new ReflectionClass($command), Job::class);
 
         if (!($annotation instanceof Job)) {
             return [];

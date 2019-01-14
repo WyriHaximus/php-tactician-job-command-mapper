@@ -35,6 +35,26 @@ class MapperTest extends TestCase
         );
     }
 
+    public function testMapWithCustomAnnotationReader(): void
+    {
+        $path = \dirname(__DIR__) . \DIRECTORY_SEPARATOR . 'test-app' . \DIRECTORY_SEPARATOR . 'Commands' . \DIRECTORY_SEPARATOR;
+        $map = (new Mapper(new AnnotationReader()))->map($path);
+
+        self::assertFalse($map->hasCommand('soya'));
+        self::assertFalse($map->hasCommand('beans'));
+        self::assertTrue($map->hasCommand('sauce'));
+        self::assertTrue($map->hasCommand('awesomesauce'));
+        self::assertTrue($map->hasCommand('sauceawesome'));
+        self::assertSame(
+            AwesomesauceCommand::class,
+            $map->getCommand('awesomesauce')
+        );
+        self::assertSame(
+            AwesomesauceCommand::class,
+            $map->getCommand('sauceawesome')
+        );
+    }
+
     public function commandsProvider()
     {
         yield [
@@ -60,7 +80,7 @@ class MapperTest extends TestCase
      */
     public function testGetJobFromCommand(string $command, array $jobs): void
     {
-        $result = (new Mapper())->getJobsFromCommand($command, new AnnotationReader());
+        $result = (new Mapper())->getJobsFromCommand($command);
         $this->assertSame($jobs, $result);
     }
 

@@ -2,13 +2,11 @@
 
 namespace WyriHaximus\Tactician\JobCommand;
 
-use Doctrine\Common\Annotations\Reader;
-
 interface MapperInterface
 {
     public function map(string $path): Mapper;
 
-    public function getJobsFromCommand(string $command, Reader $reader): array;
+    public function getJobsFromCommand(string $command): array;
 
     public function hasCommand(string $job): bool;
 
