@@ -6,8 +6,8 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\Reader;
 use Exception;
 use ReflectionClass;
-use WyriHaximus\Tactician\JobCommand\Annotations\Job;
 use function WyriHaximus\listClassesInDirectory;
+use WyriHaximus\Tactician\JobCommand\Annotations\Job;
 
 final class Mapper implements MapperInterface
 {
